@@ -1,0 +1,28 @@
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{fvextra}
+\usepackage{etoolbox}
+\usepackage{float}
+\floatplacement{figure}{H}
+\definecolor{inkblue}{HTML}{145C72}
+\definecolor{muted}{HTML}{53626A}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{muted}Stesse scelte, ragionamenti diversi}
+\fancyhead[R]{\small\color{muted}Protocollo 2.0}
+\fancyfoot[C]{\small\thepage}
+\setlength{\headheight}{16pt}
+\renewcommand{\headrulewidth}{0.3pt}
+\AtBeginDocument{\hypersetup{colorlinks=true,linkcolor=inkblue,urlcolor=inkblue}}
+\setlength{\emergencystretch}{3em}
+\AtBeginEnvironment{longtable}{\small}
+\setlength{\tabcolsep}{5pt}
+\setcounter{tocdepth}{1}
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries\color{inkblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{inkblue}}{\thesubsection}{1em}{}
+\titlespacing*{\section}{0pt}{2.0ex plus .8ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1.5ex plus .6ex}{.8ex}
+\widowpenalty=10000
+\clubpenalty=10000

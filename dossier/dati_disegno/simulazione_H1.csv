@@ -1,0 +1,5 @@
+scenario,persone_S,contrazione_vera,sd_contrazione,ancoraggio_z,sigma_errore,repliche,tasso_rifiuto,mc_inf,mc_sup,media_stima,distorsione,rmse,media_z_stimato
+"nulla, senza ancoraggio",100,0.0,0.15,0.0,4.0,40,0.0,0,0.0,-0.0027,-0.0027,0.0303,0.0036
+"nulla, ancoraggio 0,10",100,0.0,0.15,0.1,4.0,40,0.025,0,0.0734,0.0051,0.0051,0.0327,0.0976
+"contrazione 0,15, ancoraggio 0,10",100,0.15,0.15,0.1,4.0,40,1.0,1.0,1,0.1567,0.0067,0.0298,0.096
+"contrazione 0,25, ancoraggio 0,10",100,0.25,0.15,0.1,4.0,40,1.0,1.0,1,0.2544,0.0044,0.025,0.1002

@@ -1,0 +1,128 @@
+{
+  "candidate_count": 20,
+  "selected_games": [
+    [
+      10,
+      90,
+      0.5,
+      10,
+      90,
+      1.3
+    ],
+    [
+      10,
+      50,
+      0.5,
+      10,
+      90,
+      1.5
+    ],
+    [
+      10,
+      50,
+      0.5,
+      10,
+      90,
+      1.3
+    ]
+  ],
+  "rounds": 6,
+  "roles_swapped_in_second_repetition": true,
+  "criterion": "greedy maximin Schur tau, nuisance lambda and lapse, fixed recursive policies",
+  "parameter_grid": [
+    [
+      4.0,
+      0.7,
+      0.02
+    ],
+    [
+      4.0,
+      0.7,
+      0.1
+    ],
+    [
+      4.0,
+      1.5,
+      0.02
+    ],
+    [
+      4.0,
+      1.5,
+      0.1
+    ],
+    [
+      4.0,
+      2.5,
+      0.02
+    ],
+    [
+      4.0,
+      2.5,
+      0.1
+    ],
+    [
+      12.0,
+      0.7,
+      0.02
+    ],
+    [
+      12.0,
+      0.7,
+      0.1
+    ],
+    [
+      12.0,
+      1.5,
+      0.02
+    ],
+    [
+      12.0,
+      1.5,
+      0.1
+    ],
+    [
+      12.0,
+      2.5,
+      0.02
+    ],
+    [
+      12.0,
+      2.5,
+      0.1
+    ],
+    [
+      30.0,
+      0.7,
+      0.02
+    ],
+    [
+      30.0,
+      0.7,
+      0.1
+    ],
+    [
+      30.0,
+      1.5,
+      0.02
+    ],
+    [
+      30.0,
+      1.5,
+      0.1
+    ],
+    [
+      30.0,
+      2.5,
+      0.02
+    ],
+    [
+      30.0,
+      2.5,
+      0.1
+    ]
+  ],
+  "minimum_efficient_information": 0.012156577205968307,
+  "nature": "benchmark teorico, non stima del ponte o potenza validata",
+  "L0_is_distribution": true,
+  "independent_level_draw_per_game": true
+}

@@ -1,0 +1,5 @@
+trial_id,game,own_role,partner_policy,optimal_actions
+PC1,K1,A,uniforme 10 a 90,25
+PC2,K1,B,uniforme 10 a 90,65
+PC3,K1,A,numero 65 certo,32;33
+PC4,K3,B,numero 25 certo,32;33

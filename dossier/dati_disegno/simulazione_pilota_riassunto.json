@@ -1,0 +1,42 @@
+{
+ "sd_vera": 3.935,
+ "repliche": 500,
+ "regola": [
+  {
+   "N_scelto": 300,
+   "frequenza": 1.0,
+   "potenza_reale_media": 0.9964
+  },
+  {
+   "N_scelto": 360,
+   "frequenza": 0.0,
+   "potenza_reale_media": 0.0
+  },
+  {
+   "N_scelto": 420,
+   "frequenza": 0.0,
+   "potenza_reale_media": 0.0
+  },
+  {
+   "N_scelto": 480,
+   "frequenza": 0.0,
+   "potenza_reale_media": 0.0
+  },
+  {
+   "N_scelto": 540,
+   "frequenza": 0.0,
+   "potenza_reale_media": 0.0
+  },
+  {
+   "N_scelto": 600,
+   "frequenza": 0.0,
+   "potenza_reale_media": 0.0
+  },
+  {
+   "N_scelto": 0,
+   "frequenza": 0.0,
+   "potenza_reale_media": 0.0
+  }
+ ],
+ "potenza_reale_media": 0.9964
+}

@@ -1,0 +1,47 @@
+{
+  "nature": "calcoli di progetto senza dati umani",
+  "gamma_price_identity_max_error": 2.1316282072803006e-14,
+  "signal_order_invariance": true,
+  "posterior_range_new": [
+    0.16000000000000006,
+    0.84
+  ],
+  "gain_in_old_report_information": 0.39035335354346445,
+  "ratio_old_report_SE": 0.8480811406750789,
+  "five_point_interval_example": {
+    "true_U": 54.0,
+    "true_S": 42.42857142857143,
+    "true_chi": 0.25,
+    "interval_U": [
+      50.0,
+      55.0
+    ],
+    "interval_S": [
+      40.0,
+      45.0
+    ],
+    "chi_range": [
+      0.05714285714285699,
+      0.6250000000000001
+    ]
+  },
+  "sigma_limit_80pct_equivalence_n100": 5.915186687827024,
+  "payment_weights": {
+    "X_final": 0.3,
+    "K_action": 0.2,
+    "X_early0": 0.08,
+    "X_early1": 0.08,
+    "K_bets0": 0.06,
+    "K_bets1": 0.06,
+    "price_calibration": 0.1,
+    "urns": 0.06,
+    "computer": 0.06
+  },
+  "empty_slot_fallback_final_relative_probability": {
+    "F": 1,
+    "S": 0.6666666666666666,
+    "R": 0.3333333333333333
+  },
+  "chosen_empty_slot_probability": 0.5,
+  "number_X": 16
+}
