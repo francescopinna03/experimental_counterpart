@@ -1,0 +1,178 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=1.1in}
+\usepackage{graphicx}
+\graphicspath{{./}{../dossier/figure/}}
+\usepackage{booktabs}
+\usepackage[expansion=false]{microtype}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=blue!50!black,citecolor=black]{hyperref}
+\usepackage{xcolor}
+
+\title{Same Choices, Different Reasonings:\\ A Reservation-Price Design for Selection Neglect and Elicitation Effects}
+\author{Francesco Pinna \and Emanuele Sebastianelli}
+\date{October 2026\thanks{Course project for Experimental and Behavioural Economics, LUISS Guido Carli, taught by Daniela Di Cagno and Irene Maria Buso, academic year 2026--2027. The design is anchored to the public version of the companion preprint, Pinna (2026), and theorem, proposition and equation numbers cited without further qualification refer to that version. The experiment is designed and documented for presentation, and it has not been executed.}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent A buyer who offers too much for a good of uncertain quality may value the good too highly or may neglect the selection operated by the seller, and the final offer alone does not separate the two explanations. We present an experimental design in which each participant states reservation prices for the same good against two programmed sellers, one always available and one more often available when the good is worth little, so that the gap between the two prices measures the perceived selection while the first price measures the perceived value. Three elicitation protocols that differ only in when prices are collected turn measurement itself into a treatment. The design implements the process measurements requested by the companion preprint on dynamic identification of behavioral reasoning, whose theory explains both why terminal choices cannot separate reasoning channels and how to measure without distorting what is measured. Two preregistered hypotheses ask whether the average effective contraction of the selection is positive and whether final prices are equivalent, within three points, between the lightest and the richest protocol. The experiment is designed, not executed, and every number reported here is reproducible from the verification programs that travel with the design package.
+\end{abstract}
+
+\section{Introduction and research question}
+
+A final action contains information about the rule that generated it, while it usually reveals much less about the path along which that rule was implemented. In a purchase decision this ambiguity takes a concrete form, since an offer above the rational benchmark can come from an optimistic valuation of the good or from neglect of the fact that the seller's willingness to trade is itself informative. The two mechanisms can produce the same offer, and they make different predictions for intermediate beliefs and for the response to new information, which is the sense of the title of this project.
+
+The design answers two questions. The first question asks whether the gap between the reservation price for an always-available seller and the reservation price for a selective seller is smaller than the gap implied by correct conditioning, once the individual valuation of the good has been taken into account. The second question asks whether collecting intermediate decisions changes the final price, so that the elicitation technology is studied as a treatment rather than assumed innocuous. Cognitive depth and the dynamic bridge of the preprint remain exploratory extensions, and this hierarchy allows the project to be discussed even where the identification of depth stays weak.
+
+Both questions come from the companion preprint, Pinna (2026), which develops a joint theory of endpoint and process identification in finite games and asks, in its Section 10.3, in its Section 12.4 and in its conclusions, for an experiment with randomized report timing, with a passive arm and with repeated reports against an unchanged information set from which response noise can be estimated. The present design is that experiment in purchase form, as Section 3 makes precise, and the protocol dossier that accompanies this document contains the full specification, the participant instructions, the analysis plan and the verification programs.
+
+\section{Entry points for the reader}
+
+We make the entry points into the problem and into the method explicit, so that a reader can reach the design through a short and familiar route rather than through the full preprint.
+
+For the problem, the selection structure of the task is the market for lemons of Akerlof (1970), and its classical laboratory form is the acquiring-a-company problem of Samuelson and Bazerman (1985), whose field counterpart is the winner's curse documented by Kagel and Levin (1986). Charness and Levin (2009) strip the problem of strategic interaction and show that the overbidding survives against a programmed counterpart, which is exactly the simplification adopted here, while Esponda and Vespa (2014) trace the failure to the extraction of information from hypothetical events and Enke (2020) documents neglect of the selection behind the data one happens to see. Eyster and Rabin (2005) provide the equilibrium formalization through the cursed contraction of the perceived dependence between information and behavior, and the parameter of that contraction is the object our prices target. The closest experimental antecedent in the environment of this course is the acquiring-a-company experiment with value messages and information leaks of Di Cagno, G\"uth, Lohse, Marazzi and Spadoni (2022), from which the present design differs by replacing the human seller with a declared programmed rule, so that the strategic forecast is removed and the benchmark becomes computable.
+
+For the method, Schlag, Tremewan and van der Weele (2015) survey belief elicitation and give the map on which this design takes a position, while Danz, Vesterlund and Wilson (2022) document systematic distortions of a binarized scoring rule that worsen when incentives are explained better, which is the reason the design asks for reservation prices and never for probabilities. The incentive logic of a price list with a randomly drawn row goes back to Becker, DeGroot and Marschak (1964). Brandts and Charness (2011) survey the evidence that the elicitation format can itself change behavior, and our second hypothesis measures precisely such an effect with the equivalence procedure of Schuirmann (1987). Enke and Graeber (2023) motivate the anchoring alternative against which the design defends itself through certain-value tasks and a randomly shifted price grid.
+
+\section{The theoretical core of the preprint}
+
+\subsection{Two states and the cursed target}
+
+The preprint separates two simplex-valued objects with distinct probabilistic roles. The rational posterior is the belief generated by the experimental information and remains a martingale, while the perceived belief is a second process whose drift records systematic distortion and whose quadratic variation records latent exploration. Distortion enters through the cursed transformation of Section 4.2 of the preprint, which acts on a joint probability table over a payoff state and another payer's action, here the value of the good and the availability of the seller, and which mixes that table with the product of its marginals. Writing the joint table as $p$ and its two marginals as $p_{\Theta}$ and $p_{A}$, the transformation with contraction parameter $\chi$, a scalar in the unit interval, is
+\[
+\Gamma_{\chi}(p) \;=\; (1-\chi)\,p \;+\; \chi\, p_{\Theta}\otimes p_{A},
+\]
+so that marginals are preserved and only the association is contracted. Proposition 4.2 of the preprint shows that the transformation contracts mutual information at least linearly, and Proposition 4.3 shows that the induced drift of the perceived belief has a derivative in $\chi$ equal to the rational association gap, which is the pathwise content behind the price identity of Section 4.2 below.
+
+\subsection{What terminal choices cannot reveal}
+
+Theorem 9.1 of the preprint states that the score of any observed coarsening of the reasoning path is the conditional expectation of the entire-path score, so that path information decomposes exactly into observable information and a missing term. A direction that changes only the conditional path law given the observation carries zero observable information even when its path information is positive, which is the formal statement of endpoint impossibility and the reason additional process measurements are proposed at all. The preprint also defines, in its equation (77) and in its Section 13.1, the efficient information for a target parameter after profiling nuisance parameters, and its reanalysis of the Costa-Gomes and Crawford data shows that games with more efficient depth information sort subject types better in choices while generic lookup counts do not reproduce the ordering, so that process measurements help only when they are tied to the relevant score.
+
+\subsection{Elicitation as treatment and as measurement}
+
+Section 10.3 of the preprint writes a reported coordinate at elicitation time $\ell$ under schedule $D$ as its equation (94), in which the latent path may itself depend on the schedule, a report-specific displacement is added, and a transitory noise term closes the model. Repeated reports against an unchanged information set identify the noise variance, whereas a systematic elicitation effect cannot be absorbed into that variance, so that the preprint asks for randomized report timing and for a passive arm. The present design realizes that request term by term, since protocol F below is the passive arm, protocol R is the active arm with two intermediate measurements, protocol S is the intermediate treatment with a single measurement per trial, the certain-value calibration tasks provide repeated price reports at unchanged information from which the response noise is estimated, and the second hypothesis is the test of the systematic elicitation effect of equation (94). The dossier implements the measurement theory of Sections 9 and 10 of the preprint, while the three-game battery of its Section 12 remains a distinct experimental venue, and the selective seller carries the state-action association studied in that battery into the form of a purchase decision with reservation prices.
+
+\section{Design}
+
+\subsection{The purchase task}
+
+In every trial of the main module the good is worth 30 or 90 points, the announced prior probability of the high value, a scalar denoted $\pi_{0}$, equals 0.4 or 0.6, and two certificates conditionally independent given the value arrive in random order, the weak one correct with probability 0.60 and the strong one correct with probability 0.70, with symmetric accuracies that are always displayed. The participant faces two sellers for the same good. Their availability is generated by an announced programmed rule, it does not depend on prices or answers, and the probability of being available when the value is high and when it is low, two scalars in the unit interval denoted $a$ and $b$, takes the values in Table~\ref{tab:sellers}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcc}
+\toprule
+Seller type & Available if value 30 & Available if value 90\\
+\midrule
+Always available & 1 & 1\\
+Strong selection & 0.80 & 0.20\\
+Weak selection & 0.65 & 0.35\\
+Independent placebo & 0.50 & 0.50\\
+\bottomrule
+\end{tabular}
+\caption{Availability rules of the programmed sellers.}
+\label{tab:sellers}
+\end{table}
+
+The sixteen trials of the module comprise eight dependent trials, the product of two priors, two selection intensities and two repetitions, four independent placebos and four revelation trials in which the realized availability is shown after the second certificate and before the final list. For each seller the participant indicates up to which price she would buy, on a price list with unit step whose format runs from 20 to 90 in half of the trials and from 30 to 100 in the other half, so that both formats have 71 rows, cover every economically possible price and differ only in their numerical center, which moves from 55 to 65 and allows the anchoring check. A single threshold fills the monotone list, the summary screen shows both regions before confirmation, nothing is preselected, and if a list is drawn for payment the computer draws one price and applies the stated policy at that price, so that the stated threshold is never automatically the price paid. Figure~\ref{fig:task} shows a facsimile of the screen.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.9\linewidth]{facsimile_X.png}
+\caption{Facsimile of the initial request. The boxes are empty and no threshold is preselected. The screen illustrates the task and is not a collection application.}
+\label{fig:task}
+\end{figure}
+
+\subsection{Benchmarks and the price identity}
+
+Write the current posterior probability of the high value, a scalar in the open unit interval, as $\pi$. The reservation price of a risk-neutral correct conditioner for the always-available seller, and the correctly conditioned price for a selective seller with availabilities $a$ and $b$, are
+\[
+U(\pi) \;=\; 30+60\pi,
+\qquad
+C_{a,b}(\pi) \;=\; 30+60\,\frac{a\pi}{a\pi+b(1-\pi)}.
+\]
+Under the cursed transformation of the preprint applied to the joint table of value and availability, the selective price is exactly
+\[
+S(\pi,\chi) \;=\; C_{a,b}(\pi) + \chi\,\bigl[U(\pi)-C_{a,b}(\pi)\bigr],
+\]
+a straight line between the two benchmarks, and if the first price measures the subjective posterior through $\widetilde{\pi}=(U-30)/60$ and the announced conditional probabilities are represented correctly, the effective contraction recovered from a pair of prices, a scalar denoted $\psi$, is
+\[
+\psi \;=\; \frac{S-C_{a,b}(\widetilde{\pi})}{\,U-C_{a,b}(\widetilde{\pi})\,}.
+\]
+The dossier reserves $\chi$ for the preprint parameter and uses $\psi$ for this price-based coefficient, since the two coincide in the static restriction with a correct posterior while the dynamic model of the preprint does not force the perceived process to sit on its target at every instant. The identifying gap $U(\pi)-C_{a,b}(\pi)$ equals $60(b-a)\pi(1-\pi)/\{a\pi+b(1-\pi)\}$, it is positive for negative selection at interior posteriors, and the map from posterior and contraction to the two prices has Jacobian determinant equal to sixty times that gap, which gives local rank two in the static restriction. At the posterior 0.4 the rational prices are 54.00 for the always-available seller and 38.57 for the strong selective seller, a contraction of 0.25 moves the selective price to 42.43, and the weak intensity gives 45.85 and 47.89 at the same contractions.
+
+\subsection{The three protocols}
+
+Randomization is at the dyad level and blocked by session, both members of a dyad receive the same protocol, and the main module is individual while the depth module uses the real partner. Protocol F collects only final decisions. Protocol S adds one intermediate price pair per trial, drawn between two possible moments and balanced over priors and intensities. Protocol R collects both intermediate pairs. Within a trial the two certificates arrive at fixed times, the last intermediate window closes before the second certificate, a thirty-second pause that contains a new certificate separates the last measurement from the final window, no window is extended for one protocol only, and the probability that a decision is paid is equal across protocols, since an inactive slot keeps a fifty percent reserve lottery rather than raising the weight of the final decision. A session lasts roughly 85 to 95 minutes by design.
+
+\subsection{The depth module and the controls}
+
+An exploratory module targets reasoning about a real partner through three two-person games selected by a maximin criterion on the efficient information of an explicit recursive benchmark, played in six trials with role exchange and no feedback, together with bets interpreted as equivalent probabilities that may respond to ambiguity attitudes and are therefore checked for complementarity. The controls comprise eight certain-value price tasks, which estimate the response noise and the anchoring coefficient of the price instrument at unchanged information, sixteen urn tasks, and computer trials whose generating rule is shown exactly, all placed after the two main modules so that explaining the computer does not train the human game. Payment draws one decision per person, the prize is a binary lottery so that reservation prices do not inherit risk preferences, and the partner, where present, is real and announced as such, while every programmed rule is declared, so that the design contains no deception.
+
+\section{Hypotheses and preregistered analysis}
+
+\subsection{First hypothesis}
+
+The first hypothesis is a positive average effective contraction in the eight dependent trials of protocol S, using the single intermediate price pair of each trial. The estimand is the cross-person mean of $\psi$ in the static restriction, the test is one sided, and the primary procedure is an interval-censored likelihood built jointly on the two thresholds rather than a ratio of noisy prices, since the ratio is nonlinear and carries error in the variable used to build the benchmark. The declared measurement model writes the logit of the subjective posterior as a combination of the prior logit and of the log likelihood ratios of the certificates seen so far, with estimated weights and an individual intercept, lets the stated thresholds load on the grid center through an anchoring coefficient estimated from the grid randomization, transports the calibration error into the main tasks, and gives the individual intercept and the individual contraction a bivariate normal distribution with free correlation. Inference uses a studentized bootstrap by dyad, blocked by session, with 1,999 replications, and the one-sided level is 0.025.
+
+\subsection{Second hypothesis}
+
+The second hypothesis is the equivalence between protocols F and R of the final price for the selective seller in the eight dependent trials, within a margin of three points, which is five percent of the distance between the two values. To avoid imputing a latent price, the analysis uses the observable policy index on the common economic range,
+\[
+P^{\mathrm{obs}} \;=\; 30+\sum_{p=31}^{90}\mathbf{1}\{\text{buy at price } p\},
+\]
+which uses exactly the same sixty decisions in the two grid formats and is defined for every policy. For each person the index minus the correctly conditioned benchmark at the objective final posterior is averaged over the eight dependent trials, the analysis compares dyad means with session fixed effects, and the two one-sided tests of Schuirmann (1987) each use level 0.025, so that equivalence requires the two-sided 95 percent interval to lie inside the interval from minus three to three and the family of the two primary claims is controlled conservatively at five percent. An interval that crosses the margin is inconclusive about equivalence even when the difference from zero is not significant, and the result, where it obtains, is average equivalence of the protocols in this task and under these incentives rather than a proof that measuring is innocuous everywhere.
+
+\subsection{Secondary analyses and diagnostics}
+
+The secondary family, with a separate declared false discovery rate control, contains the common-slope restriction across the two intensities, the independence, revelation and certain-value placebos, order effects, the comparison of protocol S with F and R, the persistence of coefficients between first and final measurement, and the sensitivity to the grid center. The main diagnostic concerns the anchoring alternative, since an attraction of ten percent toward the old grid center 57.5 produces apparent contractions of 0.1098 and 0.1072 in the two intensities, nearly equal where the cursed account predicts a difference, and the certain-value tasks together with the random grid shift are the instruments that separate the two stories. Independent placebo trials predict a zero theoretical gap for every contraction, revelation trials predict coinciding prices at the correctly updated value after availability is shown, and both predictions are testable without the structural model.
+
+\section{Sample, pilot rule and feasibility}
+
+The planning base is 300 persons in 150 dyads, fifty dyads per protocol, organized in ten main sessions of thirty with five dyads per protocol in each session, together with a separate pilot of 36 persons in two sessions of eighteen that does not enter the main analysis. The base is conditional on an explicit rule declared before any data exist, since the central equivalence scenario reaches eighty percent power for the two one-sided tests at 300 only if the relevant standard deviation estimated in the pilot is about 5.92 or smaller, and the dossier states the freezing criterion that converts the pilot estimates into the final size. The pilot also verifies comprehension, window completion, censoring, grid sensitivity and the difference in error between calibration and task, while the sign of any preliminary effect is never used to select the primary hypothesis. The experiment is designed for presentation and is not executed, and an eventual implementation would run as an online laboratory following the lab-like methodology developed by the CESARE group in Buso, De Caprariis, Di Cagno, Ferrari, Larocca, Lor\`e, Marazzi, Panaccione and Spadoni (2020), with external subjects rather than course participants.
+
+\section{What the design delivers and where it stops}
+
+The design delivers a confirmatory core in prices with two preregistered hypotheses, a declared measurement model, and controls that separate the cursed account from its anchoring alternative, while depth and the dynamic bridge remain exploratory and no claim of process identification is made beyond the measurements actually specified. Every number in this document and in the dossier is a theoretical calculation, a benchmark diagnostic or a power scenario, no human data have been collected, and the two verification programs that travel with the design package reproduce the posterior enumeration, the price benchmarks, the anchoring counterexample and the equivalence scenarios, while the experimental materials, this document and the verification programs are public at \url{https://github.com/francescopinna03/experimental_counterpart} and the replication package of the preprint at \url{https://github.com/francescopinna03/Dynamic_Identification}.
+
+\begin{thebibliography}{99}
+
+\bibitem{akerlof} G. A. Akerlof, The market for ``lemons'': quality uncertainty and the market mechanism, \emph{Quarterly Journal of Economics} 84 (1970), 488-500.
+
+\bibitem{bdm} G. M. Becker, M. H. DeGroot, and J. Marschak, Measuring utility by a single-response sequential method, \emph{Behavioral Science} 9 (1964), 226-232.
+
+\bibitem{brandts} J. Brandts and G. Charness, The strategy method: a survey of experimental evidence, \emph{Experimental Economics} 14 (2011), 375-398.
+
+\bibitem{buso} I. M. Buso, S. De Caprariis, D. Di Cagno, L. Ferrari, V. Larocca, L. Lor\`e, F. Marazzi, L. Panaccione, and L. Spadoni, Lab-like findings of non-lab experiments: a methodological proposal and validation, CESARE Working Paper, LUISS Guido Carli, 2020.
+
+\bibitem{charnesslevin} G. Charness and D. Levin, The origin of the winner's curse: a laboratory study, \emph{American Economic Journal: Microeconomics} 1 (2009), 207-236.
+
+\bibitem{danz} D. Danz, L. Vesterlund, and A. J. Wilson, Belief elicitation and behavioral incentive compatibility, \emph{American Economic Review} 112 (2022), 2851-2883.
+
+\bibitem{dicagno} D. Di Cagno, W. G\"uth, T. Lohse, F. Marazzi, and L. Spadoni, Who cares when value (mis)reporting may be found out? An acquiring-a-company experiment with value messages and information leaks, CEIS Research Paper 531, 2022. SSRN 4022439.
+
+\bibitem{enke} B. Enke, What you see is all there is, \emph{Quarterly Journal of Economics} 135 (2020), 1363-1398.
+
+\bibitem{enkegraeber} B. Enke and T. Graeber, Cognitive uncertainty, \emph{Quarterly Journal of Economics} 138 (2023), 2021-2067.
+
+\bibitem{espondavespa} I. Esponda and E. Vespa, Hypothetical thinking and information extraction in the laboratory, \emph{American Economic Journal: Microeconomics} 6 (2014), 180-202.
+
+\bibitem{eysterrabin} E. Eyster and M. Rabin, Cursed equilibrium, \emph{Econometrica} 73 (2005), 1623-1672.
+
+\bibitem{kagellevin} J. H. Kagel and D. Levin, The winner's curse and public information in common value auctions, \emph{American Economic Review} 76 (1986), 894-920.
+
+\bibitem{pinna} F. Pinna, Dynamic identification of behavioral reasoning in finite games, SSRN Working Paper 7251718, version of August 8, 2026. \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7251718}.
+
+\bibitem{samuelsonbazerman} W. F. Samuelson and M. H. Bazerman, The winner's curse in bilateral negotiations, in \emph{Research in Experimental Economics}, volume 3, JAI Press, 1985, 105-137.
+
+\bibitem{schlag} K. H. Schlag, J. Tremewan, and J. J. van der Weele, A penny for your thoughts: a survey of methods for eliciting beliefs, \emph{Experimental Economics} 18 (2015), 457-490.
+
+\bibitem{schuirmann} D. J. Schuirmann, A comparison of the two one-sided tests procedure and the power approach for assessing the equivalence of average bioavailability, \emph{Journal of Pharmacokinetics and Biopharmaceutics} 15 (1987), 657-680.
+
+\end{thebibliography}
+
+\end{document}
