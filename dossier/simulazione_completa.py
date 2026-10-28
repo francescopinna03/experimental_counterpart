@@ -151,6 +151,9 @@ def scenario_h1(nome, n, mu_psi, z, sigma_e, sigma_psi, reps, seme):
 
 DATI_BOOT = {}
 
+def inizializza_boot(prove, L, R):
+    DATI_BOOT.update(prove=prove, L=L, R=R)
+
 def replica_boot(arg):
     seme, theta = arg
     rng = np.random.default_rng(seme)
@@ -168,9 +171,8 @@ def bootstrap_diade(n, mu_psi, z, sigma_e, sigma_psi, seme):
     u, s = prezzi_latenti(prove, alpha, psi, 1., 1.)
     L, R, _ = osserva(rng, prove, u, s, z, sigma_e, RHO_ERRORE_VERO)
     theta, lr = stima(prove, L, R)
-    DATI_BOOT.update(prove=prove, L=L, R=R)
     semi = np.random.SeedSequence(seme+1).spawn(REPLICHE_BOOTSTRAP)
-    with Pool(PROCESSI) as pool: stime = np.array(pool.map(replica_boot, [(sq, theta) for sq in semi], chunksize=1))
+    with Pool(PROCESSI, initializer=inizializza_boot, initargs=(prove, L, R)) as pool: stime = np.array(pool.map(replica_boot, [(sq, theta) for sq in semi], chunksize=1))
     return dict(contrazione_vera=mu_psi, stima_puntuale=round(theta[0], 4), lr=round(lr, 3), rifiuto_lr=test_h1(theta, lr),
                 repliche_bootstrap=REPLICHE_BOOTSTRAP, sd_bootstrap=round(stime.std(ddof=1), 4),
                 limite_inferiore_base=round(float(np.quantile(2*theta[0]-stime, .025)), 4),
