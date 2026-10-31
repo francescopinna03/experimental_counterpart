@@ -12,9 +12,9 @@ step() {
   git commit -S -m "$title" -m "$description" >/dev/null
   verify
 }
-git rm -r -f -q --ignore-unmatch dossier/simulazione_completa.py dossier/verifica_disegno_v2.py dossier/seleziona_batteria_K.py dossier/crea_facsimile.py dossier/impagina_word.py dossier/dati_disegno dossier/figure scripts/commit_serie.sh
-rm -rf dossier/dati_disegno dossier/figure
-step "English programs and certifying simulation" "Programs, data files and figures in English, with the full-replication results and a calibrated critical value." dossier/*.py dossier/design_data dossier/figures .gitignore
-step "Simulation report and updated documents" "Report of the certifying run, updated protocol section, design document and slides." dossier/*.md documents slides
-step "README and commit script" "Reproduction instructions and commit helper." README.md requirements.txt scripts
+git rm -r -f -q --ignore-unmatch dossier/Protocollo_identificazione_dinamica.md dossier/Piano_analisi.md dossier/Istruzioni_partecipanti.md dossier/Quiz_e_copione.md dossier/Traccia_presentazione.md dossier/Revisioni_2_0.md dossier/LEGGIMI.md dossier/impaginazione.tex dossier/simulation_report.md
+git rm -q --cached --ignore-unmatch documents/Nota_orientamento_progetto.tex documents/Nota_orientamento_progetto.pdf
+step "English dossier, version 2.1" "Protocol and companion documents in English, with the calibrated likelihood-ratio test as primary for the first hypothesis." dossier .gitignore
+step "Design document and slides aligned with the protocol" "Primary test of the first hypothesis updated in the design document and the project update deck." documents slides
+step "README and commit script" "Repository description and commit helper." README.md scripts
 git log --show-signature -3 --format='%h %G? %s' 2>/dev/null | cat
