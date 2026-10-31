@@ -8,24 +8,34 @@ and it is anchored to that public version. The experiment is designed and docume
 
 ## Layout
 
-- `dossier/` the complete protocol in Italian (`Protocollo_identificazione_dinamica.md`), participant instructions, comprehension quiz and script, analysis plan, oral outline, revision log, the Word layout files, and the three verification programs with their outputs in `dati_disegno/` and `figure/`. `LEGGIMI.md` describes the package.
+- `dossier/` the complete protocol (`Protocollo_identificazione_dinamica.md`), participant instructions, comprehension quiz and script, analysis plan, oral outline, revision log, the Word layout files, the five programs with their outputs in `design_data/` and `figures/`, and the English report of the certifying simulation (`simulation_report.md`). `LEGGIMI.md` describes the package. The protocol and its companion documents are currently in Italian and their English version is in preparation.
 - `documents/` the English design document (`Same_Choices_Design.tex`) and the Italian orientation note for the co-author.
 - `slides/` the first presentation deck (October 19, 2026) and the project update deck (November 4, 2026).
-- `scripts/` the signed commit series used to populate the repository.
+- `scripts/` the signed commit series used to update the repository.
 
 ## Reproducing the numbers
 
 ```
 python3 -m pip install -r requirements.txt
 cd dossier
-python3 verifica_disegno_v2.py
-python3 seleziona_batteria_K.py
-python3 simulazione_completa.py tutto
+python3 design_checks.py
+python3 select_K_battery.py
+python3 make_facsimile.py
+python3 full_simulation.py all
 ```
 
-`verifica_disegno_v2.py` reproduces the posterior enumeration, the price benchmarks, the anchoring counterexample and the analytic equivalence scenarios. `seleziona_batteria_K.py` selects the three games of the exploratory depth module. `simulazione_completa.py` simulates the entire analysis procedure from the declared measurement model: type-one error and power of the first hypothesis, power of the equivalence test at each candidate sample size, the dyad bootstrap on an example dataset, the pilot rule, and the criteria of Section 12.3 of the protocol. Its parts can be run separately, `h1`, `h2`, `boot`, `figura`, `criteri`, with an optional replication count as second argument and, for `h1`, a scenario index as third argument. The certifying run uses the replication counts set at the top of the program, 2,000 for each simulation and 1,999 for the bootstrap, and takes several hours on a multicore machine. The number of worker processes defaults to the number of cores and can be set with the environment variable `PROCESSI`. Random seeds are fixed, and results do not depend on the number of processes.
+`design_checks.py` reproduces the posterior enumeration, the price benchmarks, the anchoring counterexample and the analytic equivalence scenarios. `select_K_battery.py` selects the three games of the exploratory depth module. `make_facsimile.py` draws the illustrative task screen. `full_simulation.py` simulates the entire analysis procedure from the declared measurement model: type-one error and power of the first hypothesis, power of the equivalence test at each candidate sample size, the dyad bootstrap on an example dataset, the pilot rule, and the criteria of Section 12.3 of the protocol. Its parts can be run separately, `h1`, `h2`, `boot`, `figure`, `criteria`, with an optional replication count as second argument and, for `h1`, a scenario index as third argument. The certifying run uses the replication counts set at the top of the program, 2,000 for each simulation and 1,999 for the bootstrap. On an eight-core laptop each scenario of the first hypothesis takes about two hours, so the scenarios are best run one at a time and merged: The number of worker processes defaults to the number of cores and can be set with the environment variable `PROCESSES`. Random seeds are fixed, and results do not depend on the number of processes.
 
-The files currently in `dossier/dati_disegno/` named `simulazione_*.csv` and `bootstrap_H1_esempio.csv` come from the design-check run of October 28, 2026, with reduced replication counts, five quadrature nodes per dimension and zero error correlation between the two lists, as documented in Section 12.4 of the protocol. The certifying run replaces them.
+```
+for i in 0 1 2 3 4; do python3 full_simulation.py h1 2000 $i; done
+python3 -c "import csv,glob;r=[x for f in sorted(glob.glob('design_data/simulation_H1_*.csv')) for x in csv.DictReader(open(f))];w=csv.DictWriter(open('design_data/simulation_H1.csv','w',newline=''),fieldnames=list(r[0]));w.writeheader();w.writerows(r)"
+python3 full_simulation.py h2
+python3 full_simulation.py boot
+python3 full_simulation.py figure
+python3 full_simulation.py criteria
+```
+
+The outputs in `dossier/design_data/` come from the certifying run completed on October 31, 2026, and `simulation_report.md` documents it. The asymptotic likelihood-ratio test of the first hypothesis is mildly liberal at 100 subjects, so the program saves every replication in `replications_H1_*.csv` and calibrates the critical value by simulation (`calibrated_H1.csv`). With the calibrated value every criterion of Section 12.3 of the protocol is met.
 
 ## Citation
 
