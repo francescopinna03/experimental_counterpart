@@ -89,7 +89,7 @@ La tabella assume 100 persone per protocollo, correlazione entro diade 0,2, medi
 
 Nello scenario con differenza vera zero, l'80% è raggiunto soltanto per una deviazione standard individuale di circa 5,92 punti o meno. Questa condizione rende trasparente il vincolo del campione da 300. Il file numerico include anche 480 e 600 persone. La tabella non è una simulazione completa del nuovo protocollo.
 
-![Restrizione in prezzi e scenari di potenza del TOST. Non sono risultati sperimentali.](figure/prezzi_e_potenza_v2.png)
+![Restrizione in prezzi e scenari di potenza del TOST. Non sono risultati sperimentali.](figures/prices_and_power_v2.png)
 
 ## 12.3 Criterio prima del congelamento
 

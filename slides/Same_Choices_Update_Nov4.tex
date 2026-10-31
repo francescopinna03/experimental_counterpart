@@ -4,7 +4,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
-\graphicspath{{./}{../dossier/figure/}}
+\graphicspath{{./}{../dossier/figures/}}
 
 \usetheme{default}
 \setbeamertemplate{navigation symbols}{}
@@ -33,6 +33,7 @@ Anchored to the companion preprint, Pinna (2026), SSRN 7251718. Designed and doc
 \end{frame}
 
 \begin{frame}{The research question}
+\small
 A buyer who offers too much for a good of uncertain quality may value the good too highly, or she may neglect the selection operated by the seller, who trades more willingly precisely when the good is worth little. The two explanations can produce the same final offer, while they imply different intermediate beliefs and different responses to new information.
 \begin{enumerate}
 \item \textbf{Selection.} Is the gap between the reservation prices for an always-available seller and for a selective seller smaller than correct conditioning implies, given the individual valuation? \\ {\footnotesize Akerlof (1970), Samuelson and Bazerman (1985), Charness and Levin (2009), Enke (2020), Eyster and Rabin (2005)}
@@ -96,46 +97,50 @@ R & $\checkmark$ & $\checkmark$ & $\checkmark$ & active\\
 \end{frame}
 
 \begin{frame}{Progress since the first submission: the analysis simulated end to end}
-\begin{columns}
-\begin{column}{0.53\textwidth}
 \footnotesize
-Data generated from the declared measurement model: individual effects, estimated weights on prior and certificates, anchoring toward the grid center identified by the grid randomization, per-list noise, interval censoring, dyad and session effects. The full pipeline is then applied.
-\begin{center}\scriptsize
+Data generated from the declared measurement model (individual effects, estimated weights on prior and certificates, anchoring toward the grid center, correlated per-list noise, interval censoring, dyad and session effects), then the full pipeline, 2,000 replications per scenario.
+\vspace{2pt}
+\begin{columns}[T]
+\begin{column}{0.50\textwidth}
+\scriptsize\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lcc}
 \toprule
-H1 scenario, 100 subjects in S & rejections & estimate\\
+H1 rejections, 100 in S & asympt. & calibr.\\
 \midrule
-null, no anchoring & 0/40 & $-0.003$\\
-null, anchoring 0.10 & 1/40 & $0.005$\\
-contraction 0.15, anchoring 0.10 & 40/40 & $0.157$\\
-contraction 0.25, anchoring 0.10 & 40/40 & $0.254$\\
+null, no anchoring & 3.20\% & 2.50\%\\
+null, anchoring 0.10 & 3.20\% & 2.25\%\\
+contraction 0.15 & 99.60\% & 99.45\%\\
+contraction 0.25 & 100\% & 100\%\\
+contraction 0.15, list error 6 & 90.05\% & 87.95\%\\
 \bottomrule
 \end{tabular}
-\end{center}
-The anchoring coefficient is recovered at 0.10 in every scenario, so the grid shift does its job.
 \end{column}
-\begin{column}{0.45\textwidth}
-\includegraphics[width=\linewidth]{simulazione_completa.png}
+\begin{column}{0.46\textwidth}
+\footnotesize
+The asymptotic test is mildly liberal, so its critical value is calibrated by simulation, 4.28 instead of 3.84. Out of sample the level is 2.25\% and power stays at 99.5\%. Estimates are centered, bias at most 0.006.
 \end{column}
 \end{columns}
+\begin{center}
+\includegraphics[width=0.78\linewidth]{full_simulation.png}
+\end{center}
 \end{frame}
 
 \begin{frame}{What the simulation says about the sample}
-\begin{center}
+\begin{center}\small
 \begin{tabular}{lcccc}
 \toprule
 H2 scenario, 300 participants & $\delta=0$ & $\delta=1$ & implied SD & dyad ICC\\
 \midrule
-list noise 4, dyad effect 2 & 100\% & 89.7\% & 3.9 & 0.21\\
-list noise 6, dyad effect 3 & 95.3\% & 79.0\% & 4.6 & 0.32\\
+list noise 4, dyad effect 2 & 99.7\% & 90.1\% & 3.9 & 0.21\\
+list noise 6, dyad effect 3 & 95.9\% & 76.4\% & 4.6 & 0.32\\
 \bottomrule
 \end{tabular}
 \end{center}
-\begin{itemize}
-\item The planning base of 300 needs an individual standard deviation of about 5.9 or less. The structural model implies 3.9 to 4.6, so the pilot rule selects 300 in every simulated pilot.
-\item The constraint binds only if the price instrument's own noise exceeds roughly eight points per list, which is exactly what the certain-value tasks in the pilot measure.
-\item Dyad bootstrap and likelihood-ratio test agree on the example dataset (lower bound 0.10 for a true contraction of 0.15).
-\item This is a design check with reduced replications. The certifying run of the dossier, 2,000 replications with type-one error tolerance 0.035, is scheduled for the pilot stage.
+\begin{itemize}\small
+\item The planning base of 300 needs an individual SD of about 5.9 or less. The model implies 3.9 to 4.6, and the pilot rule selects 300 in all 2,000 simulated pilots.
+\item The constraint binds only if the price instrument's own noise exceeds roughly eight points per list, which is what the certain-value tasks in the pilot measure.
+\item The anchoring coefficient is recovered at 0.10 in every scenario, so the grid shift does its job.
+\item With the calibrated critical value every criterion of the dossier is met. With real data the calibration becomes a parametric bootstrap of the likelihood ratio under the null.
 \end{itemize}
 \end{frame}
 
@@ -144,10 +149,10 @@ list noise 6, dyad effect 3 & 95.3\% & 79.0\% & 4.6 & 0.32\\
 \item \textbf{The equivalence margin.} Three points is five percent of the value distance. Is that the right notion of a negligible elicitation effect for this task?
 \item \textbf{The programmed seller.} Removing the human counterpart makes the benchmark computable and follows Charness and Levin (2009). Is anything lost that matters for your reading of selection neglect?
 \item \textbf{Running in class.} The design is calibrated on 300 external subjects with the lab-like online methodology of the CESARE group. A classroom run with students who study these very models would be a demonstration rather than data collection.
-\item \textbf{Toward the final.} Preregistration draft in OSF format, lifting the zero error correlation between the two lists in the simulation, and the certifying 2,000-replication run.
+\item \textbf{Toward the final.} Preregistration draft in OSF format, and a faster estimator (analytic gradient, adaptive quadrature) that would also let the simulation certify the size of the dyad bootstrap.
 \end{itemize}
 \vfill
-{\footnotesize Full dossier, documents and three verification programs reproducing every number shown here: github.com/francescopinna03/experimental\_counterpart}
+{\footnotesize Full dossier, simulation report and the programs reproducing every number shown here: github.com/francescopinna03/experimental\_counterpart}
 \end{frame}
 
 \end{document}

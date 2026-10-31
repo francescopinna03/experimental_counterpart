@@ -94,7 +94,7 @@ Se l'ultima riga accettata è $k$ e la successiva è rifiutata, il prezzo latent
 
 Il passo cinque proposto inizialmente era troppo grossolano per un rapporto individuale. Per esempio, $U=54$ e $S=42,43$ corrispondono a $\psi=0,25$ con selezione forte. Osservare solo $U\in[50,55]$ e $S\in[40,45]$ è compatibile con valori di $\psi$ approssimativamente fra 0,057 e 0,625, già in assenza di errore stocastico.
 
-![Facsimile della richiesta iniziale. Le caselle sono vuote e nessuna soglia è preselezionata. La schermata illustra il compito e non è un'applicazione di raccolta.](figure/facsimile_X.png){width=6.2in}
+![Facsimile della richiesta iniziale. Le caselle sono vuote e nessuna soglia è preselezionata. La schermata illustra il compito e non è un'applicazione di raccolta.](figures/facsimile_X.png){width=6.2in}
 
 ## 4.3 Benchmark e identità in prezzi
 
@@ -378,7 +378,7 @@ La tabella assume 100 persone per protocollo, correlazione entro diade 0,2, medi
 
 Nello scenario con differenza vera zero, l'80% è raggiunto soltanto per una deviazione standard individuale di circa 5,92 punti o meno. Questa condizione rende trasparente il vincolo del campione da 300. Il file numerico include anche 480 e 600 persone. La tabella è un calcolo analitico sulla statistica individuale. La simulazione completa della procedura, con il generatore strutturale dichiarato nella sezione 10, è riportata nella sezione 12.4.
 
-![Restrizione in prezzi e scenari di potenza del TOST. Non sono risultati sperimentali.](figure/prezzi_e_potenza_v2.png)
+![Restrizione in prezzi e scenari di potenza del TOST. Non sono risultati sperimentali.](figures/prices_and_power_v2.png)
 
 ## 12.3 Criterio prima del congelamento
 
@@ -394,25 +394,28 @@ Queste simulazioni complete e il pilota non sono stati eseguiti. La consegna con
 
 ## 12.4 Simulazione della procedura di analisi
 
-Il programma simulazione_completa.py genera dati dal modello di misura dichiarato nella sezione 10.1 e applica l'intera procedura. Gli effetti individuali di intercetta e contrazione sono normali bivariati, il logit del posterior soggettivo combina prior e certificati visti con pesi stimati, le soglie dichiarate caricano sul centro della griglia con un coefficiente di ancoraggio stimato dalla randomizzazione fra i formati 20-90 e 30-100, l'errore è normale per lista e le risposte sono censurate agli intervalli unitari e ai bordi. Per S la rilevazione intermedia cade al prior oppure dopo il primo certificato, bilanciata su prior e intensità. Per H1 lo stimatore è la likelihood a intervalli con quadratura di Gauss-Hermite sui due effetti individuali e un test del rapporto di verosimiglianza unilaterale al livello 0,025, mentre il bootstrap per diade è calcolato su un dataset di esempio. Per H2 il generatore aggiunge un effetto di diade e uno di sessione, costruisce l'indice osservabile della sezione 10.2, le medie di diade, la regressione con effetti fissi di sessione e i due test unilaterali. La regola del pilota è simulata su 36 persone con la potenza analitica della sezione 12.2.
+Il programma full_simulation.py genera dati dal modello di misura dichiarato nella sezione 10.1 e applica l'intera procedura. Gli effetti individuali di intercetta e contrazione sono normali bivariati. Il logit del posterior soggettivo combina prior e certificati visti con pesi stimati. Le soglie dichiarate caricano sul centro della griglia con un coefficiente di ancoraggio, identificato dalla randomizzazione fra i formati 20-90 e 30-100. L'errore per lista ha un fattore comune alle due liste della stessa prova, con correlazione vera 0,30, e le risposte sono censurate agli intervalli unitari e ai bordi. Per S la rilevazione intermedia cade al prior oppure dopo il primo certificato, bilanciata su prior e intensità. Per H1 lo stimatore è la likelihood a intervalli, integrata con quadratura di Gauss-Hermite a sette nodi per ciascun effetto individuale e cinque per il fattore comune, e il test è il rapporto di verosimiglianza unilaterale. Il bootstrap per diade della sezione 10.1, che resta la procedura primaria dichiarata, è calcolato su un dataset di esempio, poiché ripeterlo dentro ogni replica richiederebbe circa quattro milioni di stime. Per H2 il generatore aggiunge un effetto di diade e uno di sessione, costruisce l'indice osservabile della sezione 10.2, le medie di diade, la regressione con effetti fissi di sessione e i due test unilaterali. La regola del pilota è simulata su 36 persone con la potenza analitica della sezione 12.2.
 
-| Scenario per H1, 100 persone in S | Tasso di rifiuto | Stima media | Ancoraggio stimato |
+La corsa certificante usa 2.000 repliche per ciascuno scenario di H1 e di H2, 2.000 piloti simulati e 1.999 repliche di bootstrap, con semi fissi. Una seconda esecuzione completa con gli stessi semi ha riprodotto identicamente ogni numero di H1.
+
+| Scenario per H1, 100 persone in S | Soglia asintotica 3,841 | Soglia calibrata 4,279 | Stima media |
 |:--|--:|--:|--:|
-| Contrazione zero, senza ancoraggio | 0 su 40 | -0,003 | 0,004 |
-| Contrazione zero, ancoraggio 0,10 | 1 su 40 | 0,005 | 0,098 |
-| Contrazione 0,15, ancoraggio 0,10 | 40 su 40 | 0,157 | 0,096 |
-| Contrazione 0,25, ancoraggio 0,10 | 40 su 40 | 0,254 | 0,100 |
+| Contrazione zero, senza ancoraggio | 3,20% | 2,50% | -0,003 |
+| Contrazione zero, ancoraggio 0,10 | 3,20% | 2,25% | -0,003 |
+| Contrazione 0,15, ancoraggio 0,10 | 99,60% | 99,45% | 0,147 |
+| Contrazione 0,25, ancoraggio 0,10 | 100% | 100% | 0,248 |
+| Contrazione 0,15, errore per lista 6 | 90,05% | 87,95% | 0,145 |
 
 | Scenario per H2, 300 persone | Differenza vera zero | Differenza vera un punto | Deviazione standard implicita | ICC di diade |
 |:--|--:|--:|--:|--:|
-| Errore per lista 4, effetto di diade 2 | 100% | 89,7% | 3,9 | 0,21 |
-| Errore per lista 6, effetto di diade 3 | 95,3% | 79,0% | 4,6 | 0,32 |
+| Errore per lista 4, effetto di diade 2 | 99,7% | 90,1% | 3,9 | 0,21 |
+| Errore per lista 6, effetto di diade 3 | 95,9% | 76,4% | 4,6 | 0,32 |
 
-Nel bootstrap di esempio con contrazione vera 0,15 la stima puntuale è 0,160, il limite inferiore percentile al 2,5% è 0,10 e il rapporto di verosimiglianza è 22,5, quindi le due procedure concordano. La regola del pilota sceglie 300 in tutti i 500 piloti simulati, con potenza reale media 0,996, perché la deviazione standard individuale implicata dal modello strutturale resta sotto la soglia di 5,92 in entrambi gli scenari di dispersione. Il vincolo sul campione diventa attivo soltanto se l'errore per lista supera all'incirca otto punti, ed è esattamente la grandezza che il pilota stima nei compiti a valore certo.
+Il test asintotico rifiuta la nulla nel 3,2% dei casi, con limite superiore Monte Carlo 0,040, e supera la tolleranza di 0,035 della sezione 12.3. La causa è nota: il chi quadro è un'approssimazione con dieci parametri di disturbo e 100 persone. La soglia critica viene perciò calibrata per simulazione: è il valore che, fra le repliche nulle senza ancoraggio, porta al 2,5% la frequenza di stime positive con rapporto di verosimiglianza superiore alla soglia, e vale 4,279. Applicata alle 2.000 repliche indipendenti con ancoraggio, la soglia calibrata rifiuta nel 2,25% dei casi, con limite superiore 0,029, quindi tiene anche fuori dal campione su cui è stata tarata. La potenza a contrazione 0,15 scende soltanto dal 99,60% al 99,45%. Con i dati reali la stessa calibrazione diventa un bootstrap parametrico del rapporto di verosimiglianza sotto la nulla, ai parametri di disturbo stimati, e il test calibrato accompagna il bootstrap per diade come verifica secondaria.
 
-Questa corsa è una verifica di progetto e non la corsa certificante della sezione 12.3, poiché usa 40 repliche per H1, 300 per H2, 500 per il pilota e 99 per il bootstrap, con quadratura a cinque nodi per dimensione e correlazione nulla dell'errore fra le due liste, nella versione del programma del 28 ottobre, mentre la versione definitiva stima la correlazione dell'errore con un fattore comune alle due liste e usa sette nodi per gli effetti individuali e cinque per il fattore. Con 40 repliche il limite superiore Monte Carlo dell'errore di primo tipo è 0,07 e la tolleranza di 0,035 non è verificabile. Le numerosità di replica e i nodi sono parametri in testa al programma, la parte criteri applica le soglie della sezione 12.3 ai risultati, e la corsa con 2.000 repliche è il lavoro previsto al momento del pilota. Il materiale sperimentale è pubblico nel repository https://github.com/francescopinna03/experimental_counterpart.
+Le stime della contrazione sono centrate, con distorsione assoluta non superiore a 0,006, e l'ancoraggio è recuperato a 0,10 in ogni scenario. La correlazione dell'errore fra le liste è stimata fra 0,07 e 0,13 contro il valore vero 0,30: è debolmente identificata dalle sole otto prove per persona, ma non sposta la contrazione. Nel bootstrap di esempio con contrazione vera 0,15 la stima puntuale è 0,129, il rapporto di verosimiglianza è 15,7 e i limiti inferiori al 2,5% sono 0,061 nella versione basic e 0,052 in quella percentile, entrambi sopra lo zero. La regola del pilota sceglie 300 in tutti i 2.000 piloti simulati, con potenza reale media 0,997, perché la deviazione standard individuale implicata dal modello resta sotto la soglia di 5,92 in entrambi gli scenari. Il vincolo sul campione diventa attivo soltanto se l'errore per lista supera all'incirca otto punti, ed è la grandezza che il pilota stima nei compiti a valore certo. Tutti i criteri della sezione 12.3 sono soddisfatti con la soglia calibrata. Il resoconto completo in inglese è nel file simulation_report.md, e il materiale è pubblico nel repository https://github.com/francescopinna03/experimental_counterpart.
 
-![Simulazione della procedura di analisi. A sinistra i tassi di rifiuto di H1 con intervalli Monte Carlo, al centro la potenza di H2 al variare di N nello scenario base, a destra la scelta di N della regola del pilota. Nessun dato sperimentale.](figure/simulazione_completa.png){width=6.2in}
+![Simulazione della procedura di analisi. A sinistra i tassi di rifiuto di H1 con la soglia asintotica e con quella calibrata, al centro la potenza di H2 al variare di N nello scenario base, a destra la scelta di N della regola del pilota. Nessun dato sperimentale.](figures/full_simulation.png){width=6.2in}
 
 # 13 Dati ed esclusioni
 

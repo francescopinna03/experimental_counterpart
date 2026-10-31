@@ -26,7 +26,7 @@ La versione 2 sostituisce il protocollo 1.1. Il nucleo confermativo è il modulo
 
 Le due primarie sono la contrazione effettiva media in S e l'equivalenza media F-R del prezzo finale osservabile entro tre punti. La specificazione di H1 include censura e modello di misura. La simulazione completa di recupero, errore di primo tipo e potenza è una condizione prima dell'eventuale esecuzione, non un risultato già ottenuto.
 
-Le verifiche consegnate sono riproducibili con verifica_disegno_v2.py e seleziona_batteria_K.py. Il protocollo contiene istruzioni, quiz, calendario, pagamenti, piano di analisi, budget e una traccia di sette diapositive.
+Le verifiche consegnate sono riproducibili con design_checks.py e select_K_battery.py. Il protocollo contiene istruzioni, quiz, calendario, pagamenti, piano di analisi, budget e una traccia di sette diapositive.
 
 ## Aggiornamento del 15 ottobre 2026
 
@@ -34,4 +34,4 @@ L'esperimento del corso è ancorato alla versione pubblica del preprint, SSRN 72
 
 ## Aggiornamento del 28 ottobre 2026
 
-Aggiunta la sezione 12.4 con la simulazione completa della procedura di analisi dal modello di misura dichiarato, programma simulazione_completa.py e figura simulazione_completa.png. La tabella della 12.2 è qualificata come calcolo analitico. La corsa riportata è una verifica di progetto a repliche ridotte, la corsa certificante della 12.3 resta prevista al momento del pilota. La regola di pagamento della sezione 9 e il budget della sezione 14 sono invariati e già completi. Il programma di simulazione è portato alla versione definitiva, con correlazione dell'errore fra le liste, esecuzione parallela e parte criteri, e il materiale è pubblicato nel repository experimental_counterpart.
+Aggiunta la sezione 12.4 con la simulazione completa della procedura di analisi dal modello di misura dichiarato, programma full_simulation.py e figura full_simulation.png. La tabella della 12.2 è qualificata come calcolo analitico. La corsa riportata è una verifica di progetto a repliche ridotte, la corsa certificante della 12.3 resta prevista al momento del pilota. La regola di pagamento della sezione 9 e il budget della sezione 14 sono invariati e già completi. Il programma di simulazione è portato alla versione definitiva, con correlazione dell'errore fra le liste, esecuzione parallela e parte criteri, e il materiale è pubblicato nel repository experimental_counterpart.
