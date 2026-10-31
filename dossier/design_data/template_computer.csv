@@ -1,0 +1,5 @@
+trial_id,game,own_role,partner_policy,optimal_actions
+PC1,K1,A,uniform 10 to 90,25
+PC2,K1,B,uniform 10 to 90,65
+PC3,K1,A,certain number 65,32;33
+PC4,K3,B,certain number 25,32;33

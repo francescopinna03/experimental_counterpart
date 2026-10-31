@@ -122,7 +122,7 @@
     ]
   ],
   "minimum_efficient_information": 0.012156577205968307,
-  "nature": "benchmark teorico, non stima del ponte o potenza validata",
+  "nature": "theoretical benchmark, not a bridge estimate or validated power",
   "L0_is_distribution": true,
   "independent_level_draw_per_game": true
 }

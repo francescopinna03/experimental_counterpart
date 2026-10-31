@@ -1,4 +1,4 @@
-"""Calcoli esatti e scenari di progetto. Nessun dato umano, nessuna stima SBB."""
+"""Exact calculations and design scenarios. No human data, no SBB estimation."""
 from pathlib import Path
 import csv
 import itertools as it
@@ -12,10 +12,10 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parent
-DATA, FIG = ROOT/'dati_disegno', ROOT/'figure'
+DATA, FIG = ROOT/'design_data', ROOT/'figures'
 DATA.mkdir(exist_ok=True); FIG.mkdir(exist_ok=True)
 
-def csvout(name, rows):
+def csv_out(name, rows):
     with (DATA/name).open('w', newline='', encoding='utf-8') as f:
         w=csv.DictWriter(f,fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
 
@@ -56,9 +56,9 @@ for a,b in [(.7,.85),(.6,.7)]:
     oldnew.append(dict(weak=a,strong=b,discriminating_of_8=discr,
         effective_initial=eff[0],effective_middle=eff[1],effective_final=eff[2],
         effective_S_old_three_windows=float(eff.mean())))
-csvout('audit_segnali.csv',oldnew);csvout('posterior_e_prezzi.csv',paths)
+csv_out('signals_audit.csv',oldnew);csv_out('posterior_and_prices.csv',paths)
 
-# Identità sotto la restrizione statica Gamma, inclusa la disponibilità marginale.
+# Identity under the static Gamma restriction, including marginal availability.
 maxerr=0.
 for p,a,b,chi in it.product(np.linspace(.16,.84,29),[.2,.35],[.8,.65],np.linspace(0,1,9)):
     if (a,b) not in [(.2,.8),(.35,.65)]:continue
@@ -71,7 +71,7 @@ for p,a,b,chi in it.product(np.linspace(.16,.84,29),[.2,.35],[.8,.65],np.linspac
     maxerr=max(maxerr,abs(price-predicted))
     assert np.isclose(inferred_chi(unconditional(p),price,a,b),chi)
 
-# Appiattimento verso il centro dei prezzi: controesempio al controllo a due intensità.
+# Flattening toward the price center: counterexample to the two-intensity check.
 center=[]
 for p,z,anchor in it.product([.4,.6],[.1,.2],[55.,57.5,65.]):
     u=(1-z)*unconditional(p)+z*anchor
@@ -80,15 +80,15 @@ for p,z,anchor in it.product([.4,.6],[.1,.2],[55.,57.5,65.]):
         s=(1-z)*conditional(p,a,b)+z*anchor
         out[f'chi_apparent_{label}']=float(inferred_chi(u,s,a,b))
     center.append(out)
-csvout('controesempio_ancoraggio.csv',center)
+csv_out('anchoring_counterexample.csv',center)
 
-# Il passo 5 produce intervalli, non prezzi esatti: esempio senza errore stocastico.
+# Step 5 yields intervals, not exact prices: example without stochastic error.
 u0=54.;s0=conditional(.4)+.25*(54-conditional(.4))
 u_bounds=(50.,55.);s_bounds=(40.,45.)
 u_mesh=np.linspace(50,55,1001);s_mesh=np.array([40.,45.])
 chi_possible=inferred_chi(u_mesh[:,None],s_mesh[None,:])
 
-# TOST normale con varianza pooled stimata, esatto nello scenario dichiarato.
+# Normal TOST with estimated pooled variance, exact in the declared scenario.
 def eq_power(sd,n=100,icc=.2,margin=3,delta=0,alpha=.025):
     df=n-2 # 2*(n/2 diadi)-2
     se=sd*np.sqrt(2*(1+icc)/n)
@@ -103,20 +103,20 @@ power=[]
 for n,sd,delta in it.product([100,160,200],[4,5,6,7,8,10],[0,1]):
     power.append(dict(n_per_arm=n,dyads_per_arm=n//2,icc=.2,individual_sd=sd,
         true_difference=delta,margin=3,alpha_each_TOST=.025,power=eq_power(sd,n,delta=delta)))
-csvout('potenza_equivalenza.csv',power)
+csv_out('equivalence_power.csv',power)
 sigma80=brentq(lambda sd:eq_power(sd)-.8,1,15)
 
 templates=[]
-for p,label,a,b,rep in it.product([.4,.6],['forte','debole'],[0],[0],[1,2]):
-    a,b=(.2,.8) if label=='forte' else (.35,.65)
-    templates.append(dict(condition='dipendenza',prior=p,q_high=a,q_low=b,repeat=rep,reveal='no'))
+for p,label,a,b,rep in it.product([.4,.6],['strong','weak'],[0],[0],[1,2]):
+    a,b=(.2,.8) if label=='strong' else (.35,.65)
+    templates.append(dict(condition='dependence',prior=p,q_high=a,q_low=b,repeat=rep,reveal='no'))
 for p,rep in it.product([.4,.6],[1,2]):
-    templates.append(dict(condition='indipendenza',prior=p,q_high=.5,q_low=.5,repeat=rep,reveal='no'))
-for p,label in it.product([.4,.6],['forte','debole']):
-    a,b=(.2,.8) if label=='forte' else (.35,.65)
-    templates.append(dict(condition='rivelazione',prior=p,q_high=a,q_low=b,repeat=1,reveal='J prima lista finale'))
+    templates.append(dict(condition='independence',prior=p,q_high=.5,q_low=.5,repeat=rep,reveal='no'))
+for p,label in it.product([.4,.6],['strong','weak']):
+    a,b=(.2,.8) if label=='strong' else (.35,.65)
+    templates.append(dict(condition='revelation',prior=p,q_high=a,q_low=b,repeat=1,reveal='J before final list'))
 for k,row in enumerate(templates,1): row['trial_id']=f'X{k:02d}'
-csvout('template_X.csv',templates)
+csv_out('template_X.csv',templates)
 
 calibration=[]
 for value,availability in [(36,.2),(48,.65),(66,.35),(78,.8)]:
@@ -124,24 +124,24 @@ for value,availability in [(36,.2),(48,.65),(66,.35),(78,.8)]:
         calibration.append(dict(trial_id=f'C{len(calibration)+1:02d}',known_value=value,
             selective_availability=availability,grid_lower=lo,grid_upper=hi,grid_step=1,
             benchmark_U=value,benchmark_S=value))
-csvout('template_calibrazione_prezzi.csv',calibration)
+csv_out('template_price_calibration.csv',calibration)
 rng=np.random.default_rng(20261009)
-sides=np.array(['sinistra']*8+['destra']*8);rng.shuffle(sides)
+sides=np.array(['left']*8+['right']*8);rng.shuffle(sides)
 urns=[]
 for j in range(16):
     low=[20,40,60][j%3];high=low+j+1
     urns.append(dict(trial_id=f'U{j+1:02d}',total_tokens=100,gap_pp=j+1,
-        winning_left=high if sides[j]=='sinistra' else low,
-        winning_right=high if sides[j]=='destra' else low,best_side=sides[j]))
-csvout('template_urne.csv',urns)
+        winning_left=high if sides[j]=='left' else low,
+        winning_right=high if sides[j]=='right' else low,best_side=sides[j]))
+csv_out('template_urns.csv',urns)
 computers=[
-    dict(trial_id='PC1',game='K1',own_role='A',partner_policy='uniforme 10 a 90',optimal_actions='25'),
-    dict(trial_id='PC2',game='K1',own_role='B',partner_policy='uniforme 10 a 90',optimal_actions='65'),
-    dict(trial_id='PC3',game='K1',own_role='A',partner_policy='numero 65 certo',optimal_actions='32;33'),
-    dict(trial_id='PC4',game='K3',own_role='B',partner_policy='numero 25 certo',optimal_actions='32;33')]
-csvout('template_computer.csv',computers)
+    dict(trial_id='PC1',game='K1',own_role='A',partner_policy='uniform 10 to 90',optimal_actions='25'),
+    dict(trial_id='PC2',game='K1',own_role='B',partner_policy='uniform 10 to 90',optimal_actions='65'),
+    dict(trial_id='PC3',game='K1',own_role='A',partner_policy='certain number 65',optimal_actions='32;33'),
+    dict(trial_id='PC4',game='K3',own_role='B',partner_policy='certain number 25',optimal_actions='32;33')]
+csv_out('template_computer.csv',computers)
 
-# Pagamento fisso per slot e lotteria di riserva indipendente dal comportamento.
+# Fixed payment per slot and reserve lottery independent of behavior.
 weights=dict(X_final=.30,K_action=.20,X_early0=.08,X_early1=.08,
     K_bets0=.06,K_bets1=.06,price_calibration=.10,urns=.06,computer=.06)
 assert np.isclose(sum(weights.values()),1)
@@ -149,7 +149,7 @@ for lo,hi in [(20,90),(30,100)]:
     pay=[.5+j*(v-p)/200 for j,v,p in it.product([0,1],[30,90],range(lo,hi+1))]
     assert min(pay)>=0 and max(pay)<=1
 
-checks=dict(nature='calcoli di progetto senza dati umani',
+checks=dict(nature='design calculations without human data',
     gamma_price_identity_max_error=maxerr,
     signal_order_invariance=True,
     posterior_range_new=[min(x['posterior'] for x in paths),max(x['posterior'] for x in paths)],
@@ -160,23 +160,23 @@ checks=dict(nature='calcoli di progetto senza dati umani',
     sigma_limit_80pct_equivalence_n100=sigma80,payment_weights=weights,
     empty_slot_fallback_final_relative_probability=dict(F=1,S=2/3,R=1/3),
     chosen_empty_slot_probability=.5,number_X=len(templates))
-(DATA/'verifiche_v2.json').write_text(json.dumps(checks,indent=2,ensure_ascii=False)+'\n')
+(DATA/'checks_v2.json').write_text(json.dumps(checks,indent=2,ensure_ascii=False)+'\n')
 
 plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'axes.spines.top':False,'axes.spines.right':False})
 fig,ax=plt.subplots(1,2,figsize=(10.7,4.1))
 x=np.linspace(0,1,101)
-for a,b,label,col in [(.2,.8,'Selezione forte','#1b6079'),(.35,.65,'Selezione debole','#b86d27')]:
+for a,b,label,col in [(.2,.8,'Strong selection','#1b6079'),(.35,.65,'Weak selection','#b86d27')]:
     c=conditional(.4,a,b)
     ax[0].plot(x,c+x*(54-c),label=label,color=col,lw=2.4)
-ax[0].axhline(54,color='#666666',ls='--',label='Sempre disponibile')
-ax[0].set(xlabel='Contrazione effettiva',ylabel='Prezzo di riserva in punti',title='Restrizione statica, posterior 0,4')
+ax[0].axhline(54,color='#666666',ls='--',label='Always available')
+ax[0].set(xlabel='Effective contraction',ylabel='Reservation price in points',title='Static restriction, posterior 0.4')
 ax[0].legend(frameon=False,fontsize=8)
 for n,col in [(100,'#1b6079'),(160,'#b86d27'),(200,'#56815a')]:
     xx=np.linspace(4,10,25)
-    ax[1].plot(xx,[eq_power(sd,n) for sd in xx],label=f'{3*n} persone totali',color=col,lw=2)
+    ax[1].plot(xx,[eq_power(sd,n) for sd in xx],label=f'{3*n} subjects in total',color=col,lw=2)
 ax[1].axhline(.8,color='#666666',ls='--',lw=.8)
-ax[1].set(xlabel='SD individuale del prezzo medio aggiustato',ylabel='Potenza nello scenario',ylim=(0,1),title='Equivalenza entro 3 punti')
+ax[1].set(xlabel='Individual SD of the adjusted mean price',ylabel='Power in the scenario',ylim=(0,1),title='Equivalence within 3 points')
 ax[1].legend(frameon=False,fontsize=8)
-fig.text(.5,.015,'Calcoli teorici. TOST: alpha 0,025 per lato; ICC 0,2; differenza vera zero.',ha='center',fontsize=8)
-fig.tight_layout(rect=(0,.055,1,1));fig.savefig(FIG/'prezzi_e_potenza_v2.png',dpi=170)
+fig.text(.5,.015,'Theoretical calculations. TOST: alpha 0.025 per side; ICC 0.2; true difference zero.',ha='center',fontsize=8)
+fig.tight_layout(rect=(0,.055,1,1));fig.savefig(FIG/'prices_and_power_v2.png',dpi=170)
 print(json.dumps(checks,ensure_ascii=False,indent=2))

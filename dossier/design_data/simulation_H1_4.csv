@@ -1,0 +1,2 @@
+scenario,subjects_S,true_contraction,sd_contraction,anchoring_z,sigma_error,true_error_rho,replications,rejection_rate,mc_lower,mc_upper,mean_estimate,bias,rmse,mean_estimated_z,mean_estimated_error_rho
+"contraction 0.15, error 6",100,0.15,0.15,0.1,6.0,0.3,2000,0.9005,0.8874,0.9136,0.1445,-0.0055,0.0473,0.1044,0.0677

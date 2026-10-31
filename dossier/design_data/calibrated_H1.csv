@@ -1,0 +1,6 @@
+scenario,replications,calibrated_threshold,rejection_rate,mc_lower,mc_upper
+contraction_0_15_anchoring_0_10,2000,4.2788,0.9945,0.9913,0.9977
+contraction_0_15_error_6,2000,4.2788,0.8795,0.8652,0.8938
+contraction_0_25_anchoring_0_10,2000,4.2788,1.0,1.0,1
+null_anchoring_0_10,2000,4.2788,0.0225,0.016,0.029
+null_no_anchoring,2000,4.2788,0.025,0.0182,0.0318

@@ -1,0 +1,17 @@
+trial_id,total_tokens,gap_pp,winning_left,winning_right,best_side
+U01,100,1,20,21,right
+U02,100,2,40,42,right
+U03,100,3,63,60,left
+U04,100,4,20,24,right
+U05,100,5,45,40,left
+U06,100,6,66,60,left
+U07,100,7,20,27,right
+U08,100,8,48,40,left
+U09,100,9,60,69,right
+U10,100,10,20,30,right
+U11,100,11,51,40,left
+U12,100,12,72,60,left
+U13,100,13,20,33,right
+U14,100,14,54,40,left
+U15,100,15,75,60,left
+U16,100,16,20,36,right

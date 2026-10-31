@@ -1,5 +1,5 @@
-N_scelto,frequenza,potenza_reale_media
-300,1.0,0.9964
+chosen_N,frequency,mean_realized_power
+300,1.0,0.997
 360,0.0,0.0
 420,0.0,0.0
 480,0.0,0.0

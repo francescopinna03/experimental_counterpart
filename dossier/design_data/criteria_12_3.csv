@@ -1,0 +1,21 @@
+criterion,value,threshold,direction,passed
+"type-one error at the asymptotic threshold, null, no anchoring",0.0397,0.035,maximum,False
+"type-one error at the asymptotic threshold, null, anchoring 0.10",0.0397,0.035,maximum,False
+"H1 power at 0.15 at the asymptotic threshold, contraction 0.15, anchoring 0.10",0.9932,0.8,minimum,True
+"H1 power at 0.15 at the asymptotic threshold, contraction 0.15, error 6",0.8874,0.8,minimum,True
+"H2 baseline, N=300: zero 0.995 and one point 0.888",1.24325,1.0,minimum,True
+"H2 baseline, N=360: zero 0.998 and one point 0.932",1.2469999999999999,1.0,minimum,True
+"H2 baseline, N=420: zero 1.000 and one point 0.961",1.25,1.0,minimum,True
+"H2 baseline, N=480: zero 1.000 and one point 0.976",1.25,1.0,minimum,True
+"H2 baseline, N=540: zero 1.000 and one point 0.987",1.25,1.0,minimum,True
+"H2 baseline, N=600: zero 1.000 and one point 0.990",1.25,1.0,minimum,True
+"H2 high dispersion, N=300: zero 0.950 and one point 0.745",1.187875,1.0,minimum,True
+"H2 high dispersion, N=360: zero 0.977 and one point 0.828",1.2209999999999999,1.0,minimum,True
+"H2 high dispersion, N=420: zero 0.991 and one point 0.880",1.2391249999999998,1.0,minimum,True
+"H2 high dispersion, N=480: zero 0.999 and one point 0.921",1.248125,1.0,minimum,True
+"H2 high dispersion, N=540: zero 0.999 and one point 0.942",1.248125,1.0,minimum,True
+"H2 high dispersion, N=600: zero 1.000 and one point 0.965",1.25,1.0,minimum,True
+"H1 power at 0.15 at calibrated threshold 4.279, contraction_0_15_anchoring_0_10",0.9913,0.8,minimum,True
+"H1 power at 0.15 at calibrated threshold 4.279, contraction_0_15_error_6",0.8652,0.8,minimum,True
+"type-one error at calibrated threshold 4.279, null_anchoring_0_10",0.029,0.035,maximum,True
+"type-one error at calibrated threshold 4.279, null_no_anchoring",0.0318,0.035,maximum,True

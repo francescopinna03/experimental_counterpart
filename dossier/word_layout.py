@@ -1,4 +1,4 @@
-"""Uniforma l'impaginazione del DOCX prodotto da Pandoc, preservando le equazioni."""
+"""Normalizes the layout of the DOCX produced by Pandoc, preserving equations."""
 from pathlib import Path
 from docx import Document
 from docx.shared import Mm, Pt, RGBColor
@@ -7,7 +7,7 @@ from docx.oxml.ns import qn
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
 
-path = Path(__file__).resolve().parent.parent / 'Protocollo_identificazione_dinamica.docx'
+path = Path(__file__).resolve().parent.parent / 'Protocol_dynamic_identification.docx'
 doc = Document(path)
 math_props = doc.settings.element.find(qn('m:mathPr'))
 if math_props is not None:
@@ -50,7 +50,8 @@ for style in doc.styles:
 widths_mm = [
     [96, 34, 34], [39, 125], [82, 41, 41], [65, 33, 33, 33],
     [27, 26, 29, 18, 21, 19, 24], [26, 46, 46, 46], [124, 40],
-    [124, 40], [50, 57, 57], [37, 127], [78, 56, 30], [114, 50],
+    [124, 40], [50, 57, 57], [70, 32, 32, 30], [62, 26, 26, 26, 24],
+    [37, 127], [78, 56, 30], [114, 50],
 ]
 assert len(doc.tables) == len(widths_mm), (len(doc.tables), len(widths_mm))
 for table, widths in zip(doc.tables, widths_mm):
@@ -108,4 +109,4 @@ for table, widths in zip(doc.tables, widths_mm):
                         run.bold = True
                         run.font.color.rgb = RGBColor(0, 0, 0)
 doc.save(path)
-print(f'DOCX impaginato: {path.name}, {len(doc.tables)} tabelle')
+print(f'DOCX laid out: {path.name}, {len(doc.tables)} tables')

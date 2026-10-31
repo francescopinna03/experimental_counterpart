@@ -1,0 +1,42 @@
+{
+ "true_sd": 3.891,
+ "replications": 2000,
+ "rule": [
+  {
+   "chosen_N": 300,
+   "frequency": 1.0,
+   "mean_realized_power": 0.997
+  },
+  {
+   "chosen_N": 360,
+   "frequency": 0.0,
+   "mean_realized_power": 0.0
+  },
+  {
+   "chosen_N": 420,
+   "frequency": 0.0,
+   "mean_realized_power": 0.0
+  },
+  {
+   "chosen_N": 480,
+   "frequency": 0.0,
+   "mean_realized_power": 0.0
+  },
+  {
+   "chosen_N": 540,
+   "frequency": 0.0,
+   "mean_realized_power": 0.0
+  },
+  {
+   "chosen_N": 600,
+   "frequency": 0.0,
+   "mean_realized_power": 0.0
+  },
+  {
+   "chosen_N": 0,
+   "frequency": 0.0,
+   "mean_realized_power": 0.0
+  }
+ ],
+ "mean_realized_power": 0.997
+}

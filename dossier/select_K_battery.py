@@ -1,9 +1,9 @@
-"""Batteria preliminare. Fisher del benchmark ricorsivo, non del ponte SBB.
+"""Preliminary battery. Fisher information of the recursive benchmark, not of the SBB bridge.
 
-Le predizioni dipendono da L0 uniforme e da perdita quadratica. La griglia ha
-passo 1. Il criterio profila lambda e lapse. Non include le scommesse intermedie,
-le preferenze per la fonte o un processo dinamico: questi richiedono il pilota.
-L'informazione additiva assume livello riestratto indipendentemente per gioco.
+Predictions depend on a uniform L0 and on quadratic loss. The grid has
+step 1. The criterion profiles lambda and lapse. It excludes intermediate bets,
+source preferences and any dynamic process: those require the pilot.
+Additive information assumes a level redrawn independently in each game.
 """
 from pathlib import Path
 import itertools as it
@@ -11,7 +11,7 @@ import json,csv
 import numpy as np
 from scipy.special import softmax,gammaln
 
-ROOT=Path(__file__).resolve().parent;DATA=ROOT/'dati_disegno'
+ROOT=Path(__file__).resolve().parent;DATA=ROOT/'design_data'
 def write(name,rows):
     with (DATA/name).open('w',newline='',encoding='utf-8') as f:
         w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
@@ -83,9 +83,9 @@ for rank,j in enumerate(selected,1):
         thresholds=[int(np.ceil((a+b)/2)) for a,b in zip(sorted([g['eq'][role]]+means)[:-1],sorted([g['eq'][role]]+means)[1:])]
         rows.append(dict(game=f'K{rank}',role='A' if role==0 else 'B',
             lower=int(gr[0]),upper=int(gr[-1]),coefficient=g['specs'][2 if role==0 else 5],
-            L0='uniforme sulla griglia',L1=means[0],L2=means[1],L3=means[2],
+            L0='uniform on the grid',L1=means[0],L2=means[1],L3=means[2],
             equilibrium=g['eq'][role],thresholds=';'.join(map(str,thresholds))))
-write('batteria_K.csv',rows)
+write('K_battery.csv',rows)
 diagnostics=[]
 for par,mat in zip(parameters,total):
     e=efficient(mat)
@@ -98,8 +98,8 @@ out=dict(candidate_count=len(candidates),selected_games=[candidates[j]['specs'] 
     rounds=6,roles_swapped_in_second_repetition=True,
     criterion='greedy maximin Schur tau, nuisance lambda and lapse, fixed recursive policies',
     parameter_grid=parameters,minimum_efficient_information=min(efficient(z) for z in total),
-    nature='benchmark teorico, non stima del ponte o potenza validata',L0_is_distribution=True,
+    nature='theoretical benchmark, not a bridge estimate or validated power',L0_is_distribution=True,
     independent_level_draw_per_game=True)
-(DATA/'selezione_K.json').write_text(json.dumps(out,indent=2,ensure_ascii=False)+'\n')
+(DATA/'K_selection.json').write_text(json.dumps(out,indent=2,ensure_ascii=False)+'\n')
 print(json.dumps(dict(candidate_count=len(candidates),selected=rows,
     worst_ideal_SE=min(diagnostics,key=lambda d:d['efficient_information_tau_per_person'])),ensure_ascii=False,indent=2))

@@ -1,5 +1,5 @@
 {
-  "nature": "calcoli di progetto senza dati umani",
+  "nature": "design calculations without human data",
   "gamma_price_identity_max_error": 2.1316282072803006e-14,
   "signal_order_invariance": true,
   "posterior_range_new": [

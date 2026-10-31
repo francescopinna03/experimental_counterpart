@@ -1,0 +1,2 @@
+scenario,subjects_S,true_contraction,sd_contraction,anchoring_z,sigma_error,true_error_rho,replications,rejection_rate,mc_lower,mc_upper,mean_estimate,bias,rmse,mean_estimated_z,mean_estimated_error_rho
+"null, anchoring 0.10",100,0.0,0.15,0.1,4.0,0.3,2000,0.032,0.0243,0.0397,-0.003,-0.003,0.034,0.1026,0.1039

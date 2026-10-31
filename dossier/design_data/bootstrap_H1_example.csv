@@ -1,0 +1,2 @@
+true_contraction,point_estimate,lr,lr_rejection,bootstrap_replications,sd_bootstrap,basic_lower_bound,percentile_lower_bound
+0.15,0.1291,15.726,True,1999,0.0372,0.0611,0.0518
