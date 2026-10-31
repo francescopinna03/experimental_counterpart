@@ -90,7 +90,7 @@ R & $\checkmark$ & $\checkmark$ & $\checkmark$ & active\\
 \end{tabular}
 \end{center}
 \begin{itemize}
-\item \textbf{H1, selection.} The average effective contraction recovered from price pairs is positive in the trials with the selective seller under protocol S. Interval-censored likelihood, one-sided test at 2.5 percent, dyad bootstrap.
+\item \textbf{H1, selection.} The average effective contraction recovered from price pairs is positive in the trials with the selective seller under protocol S. Interval-censored likelihood, one-sided likelihood-ratio test at 2.5 percent with a critical value calibrated by parametric bootstrap, dyad bootstrap as robustness.
 \item \textbf{H2, measurement.} Final prices for the selective seller are equivalent between F and R within three points, five percent of the value distance, through two one-sided tests at 2.5 percent each.
 \item \textbf{Controls.} Certain-value tasks, a randomly shifted grid, placebo sellers and revelation trials separate the cursed account from anchoring. Depth with a real partner stays exploratory.
 \end{itemize}
@@ -140,7 +140,7 @@ list noise 6, dyad effect 3 & 95.9\% & 76.4\% & 4.6 & 0.32\\
 \item The planning base of 300 needs an individual SD of about 5.9 or less. The model implies 3.9 to 4.6, and the pilot rule selects 300 in all 2,000 simulated pilots.
 \item The constraint binds only if the price instrument's own noise exceeds roughly eight points per list, which is what the certain-value tasks in the pilot measure.
 \item The anchoring coefficient is recovered at 0.10 in every scenario, so the grid shift does its job.
-\item With the calibrated critical value every criterion of the dossier is met. With real data the calibration becomes a parametric bootstrap of the likelihood ratio under the null.
+\item With the calibrated critical value every criterion of the dossier is met. With real data the calibration is a parametric bootstrap under the null, now the primary test of H1.
 \end{itemize}
 \end{frame}
 
@@ -152,7 +152,7 @@ list noise 6, dyad effect 3 & 95.9\% & 76.4\% & 4.6 & 0.32\\
 \item \textbf{Toward the final.} Preregistration draft in OSF format, and a faster estimator (analytic gradient, adaptive quadrature) that would also let the simulation certify the size of the dyad bootstrap.
 \end{itemize}
 \vfill
-{\footnotesize Full dossier, simulation report and the programs reproducing every number shown here: github.com/francescopinna03/experimental\_counterpart}
+{\footnotesize Full dossier and the programs reproducing every number shown here: github.com/francescopinna03/experimental\_counterpart}
 \end{frame}
 
 \end{document}
