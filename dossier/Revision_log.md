@@ -41,3 +41,28 @@ The certifying run of the simulation was completed, with 2,000 replications per 
 The primary test of H1 changes, before any data. The one-sided likelihood-ratio test with a critical value calibrated by parametric bootstrap under the null becomes primary, because its level is verified by simulation, while the level of the studentized dyad bootstrap is not and cannot be certified at reasonable cost with the current estimator. The dyad bootstrap is kept as a robustness check. Two rules are declared in advance in Section 10.1: if the goodness-of-fit check or the independent-placebo check rejects the measurement model, the dyad bootstrap becomes primary, and if the checks pass and the two procedures disagree, the calibrated test decides and both results are reported.
 
 The dossier is translated into English. The extracts (analysis plan, instructions, quiz and script, presentation outline) are generated from the corresponding sections of the protocol, so that they cannot diverge from it.
+
+## Update of November 23, 2026
+
+The design is revised before any data. The purchase task becomes the whole experiment, and the dossier is rewritten on the present design.
+
+| Proposal | Decision | Reason |
+|:--|:--|:--|
+| Exploratory module on reasoning about a partner, with three games, bets and computer trials | Removed | The confirmatory part never used it, and the session time goes to the purchase task |
+| Two prices on the same screen as the only measure of the neglect | Six single-seller trials within pairs added, pull estimated as a common parameter | Joint trials identify only the composite of neglect and pull between the two prices |
+| Two intensities of selection | Third intensity added, availability 0.95 and 0.05 | The averaging and the dampening rule part ways only under extreme selection |
+| Averaging as the only description of the neglect | Rule weight connecting averaging and dampening, third hypothesis under a power rule | The form of the neglect is an empirical question, and the first test is exact only when the two rules coincide |
+| Prize probability 0.5 plus points over 200 | 0.5 plus points over 140 | Steepest linear conversion that keeps the probability between zero and one in both formats |
+| Flat incentives near the optimum left implicit | Declared, with practice lists with feedback and an individual understatement term | A threshold five points above the optimum costs about 2.4 euro cents in expectation |
+| Drawing probabilities that included the removed module | 48, 13, 13, 16 and 10 percent | Shares of the remaining categories rescaled in proportion |
+| Windows of 20 seconds | 30 seconds in the planning calendar, with a pilot rule that can raise them to 45 together with a variant of sixteen trials | A binding deadline could produce the neglect that the experiment measures |
+| Equivalence margin of three points | Kept and declared as wide for a small neglect | A margin of two points would require an individual standard deviation of 3.9 or less |
+| Comparison between partners as a check of the neglect without the model | Adopted as secondary, with a correction based on the two formats | Without the correction an attraction of 10 percent rejects a true null in 97 percent of samples |
+| Role of the urns | Check of the premise of the prize rule and frequency of inattentive answers | With visible counts the choice is easy and does not bound the noise of the purchase task |
+| Odd number of admitted participants | One participant drawn at random receives the fixed fee and does not take part | Pairs are formed after the quiz |
+| Coefficient recovered from the thresholds named ψ | Written χ and called degree of selection neglect, with the caveat on the parameter of the preprint kept in Section 3 | One vocabulary across the protocol and the explanatory note |
+| Outline of the oral presentation among the extracts | Removed | Presentation materials stay in the folder slides |
+
+Section 6 now covers the pull and the two rules, Section 9.4 the incentives near the optimum, Section 10.3 the third hypothesis and Section 10.4 the secondary analyses. In the quiz the two questions on the removed module give way to one on a drawn price above the threshold and one on the independence of the availability from the threshold. The certifying simulation of Section 12.4 is kept and qualified as concerning the design with two intensities and joint trials only. Its numbers do not carry over, and the simulation of the present design is in preparation under the plan stated in that section.
+
+The programs follow the text. design_checks.py covers the three intensities, the two rules, the identity of the pull, the calendars and the numbers quoted in the protocol, which are collected in checks.json. partner_comparison_check.py is new. select_K_battery.py and its outputs are removed. The explanatory note on the experimental apparatus is added to the folder documents, and the design document is rewritten on the present design.
