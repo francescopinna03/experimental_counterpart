@@ -12,9 +12,10 @@ step() {
   git commit -S -m "$title" -m "$description" >/dev/null
   verify
 }
-git rm -r -f -q --ignore-unmatch dossier/Protocollo_identificazione_dinamica.md dossier/Piano_analisi.md dossier/Istruzioni_partecipanti.md dossier/Quiz_e_copione.md dossier/Traccia_presentazione.md dossier/Revisioni_2_0.md dossier/LEGGIMI.md dossier/impaginazione.tex dossier/simulation_report.md
-git rm -q --cached --ignore-unmatch documents/Nota_orientamento_progetto.tex documents/Nota_orientamento_progetto.pdf
-step "English dossier, version 2.1" "Protocol and companion documents in English, with the calibrated likelihood-ratio test as primary for the first hypothesis." dossier .gitignore
-step "Design document and slides aligned with the protocol" "Primary test of the first hypothesis updated in the design document and the project update deck." documents slides
+git rm -r -f -q --ignore-unmatch dossier/select_K_battery.py dossier/design_data/K_battery.csv dossier/design_data/K_selection.json dossier/design_data/fisher_K_benchmark.csv dossier/design_data/template_computer.csv dossier/design_data/checks_v2.json dossier/figures/prices_and_power_v2.png
+step "Design checks for the present design" "Benchmark prices under the two rules, trial templates, calendars and the check of the comparison between partners." dossier/design_checks.py dossier/partner_comparison_check.py dossier/design_data dossier/figures
+git rm -f -q --ignore-unmatch dossier/Presentation_outline.md
+step "Protocol and extracts on the present design" "Protocol, analysis plan, instructions, quiz and script, revision log and layout header." dossier
+step "Explanatory note and design document" "Explanatory note on the experimental apparatus and design document aligned with the protocol." documents
 step "README and commit script" "Repository description and commit helper." README.md scripts
-git log --show-signature -3 --format='%h %G? %s' 2>/dev/null | cat
+git log --show-signature -4 --format='%h %G? %s' 2>/dev/null | cat
