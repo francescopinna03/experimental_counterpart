@@ -1,0 +1,110 @@
+{
+  "nature": "design calculations without human data",
+  "gamma_price_identity_max_error": 2.1316282072803006e-14,
+  "signal_order_invariance": true,
+  "posterior_range_new": [
+    0.16000000000000006,
+    0.84
+  ],
+  "gain_in_old_report_information": 0.39035335354346445,
+  "ratio_old_report_SE": 0.8480811406750789,
+  "five_point_interval_example": {
+    "true_U": 54.0,
+    "true_S": 42.42857142857143,
+    "true_chi": 0.25,
+    "interval_U": [
+      50.0,
+      55.0
+    ],
+    "interval_S": [
+      40.0,
+      45.0
+    ],
+    "chi_range": [
+      0.05714285714285699,
+      0.6250000000000001
+    ]
+  },
+  "pull_identity_max_error": 8.881784197001252e-16,
+  "dampening_strong_belief_0_4": {
+    "excess_at_degree_plus_0_15": 1.6439205598060411,
+    "excess_at_degree_minus_0_15": -1.4173859808396188
+  },
+  "averaging_probability_negative_below_degree": -0.09259259259259262,
+  "averaging_excess_limit_seller_never_sells_90": 12.0,
+  "apparent_mean_degree_zero_mean_dampening_sd_0_15": 0.008757991976595594,
+  "mixture_information_ratio_degree_0_25": 0.5456605851351345,
+  "mean_gap_final_decision": {
+    "weak": 7.1757720193768755,
+    "strong": 15.1431515199085,
+    "very_strong": 25.409196117277276,
+    "all_joint_trials": 15.909373218854219
+  },
+  "margin_3_over_mean_gap": 0.18856808239589828,
+  "outcome_shift_mean_neglect_0_15": 2.3864059828281325,
+  "information_share_by_intensity": {
+    "final": {
+      "weak": 0.05162625468541041,
+      "strong": 0.23630090452187422,
+      "very_strong": 0.7120728407927154
+    },
+    "intermediate": {
+      "weak": 0.06260036488687434,
+      "strong": 0.26576905930244615,
+      "very_strong": 0.6716305758106796
+    }
+  },
+  "risk_aversion_without_neglect": {
+    "certainty_equivalent_55": {
+      "P1": 49.401807084083416,
+      "P2": 36.45088217750411,
+      "belief_read": 0.3233634514013903,
+      "C_at_belief_read": 36.4034276107885,
+      "apparent_degree": 0.003650806380373036,
+      "largest_apparent_degree": 0.009486918709826212
+    },
+    "certainty_equivalent_50": {
+      "P1": 45.15623431774213,
+      "P2": 34.80288684036258,
+      "belief_read": 0.2526039052957022,
+      "C_at_belief_read": 34.674692827683536,
+      "apparent_degree": 0.012230454156064148,
+      "largest_apparent_degree": 0.04115831928797482
+    }
+  },
+  "incentive_near_optimum": {
+    "threshold_1_points_above_optimum": {
+      "expected_points_lost": 0.014084507042253521,
+      "probability_points_lost": 0.01006036217303823,
+      "euros_lost": 0.0016096579476861167
+    },
+    "threshold_5_points_above_optimum": {
+      "expected_points_lost": 0.2112676056338028,
+      "probability_points_lost": 0.15090543259557343,
+      "euros_lost": 0.02414486921529175
+    },
+    "threshold_10_points_above_optimum": {
+      "expected_points_lost": 0.7746478873239436,
+      "probability_points_lost": 0.5533199195171026,
+      "euros_lost": 0.08853118712273642
+    }
+  },
+  "sigma_limit_80pct_equivalence_n100": 5.915186687827024,
+  "sigma_limit_80pct_equivalence_n100_margin_2": 3.9434577918846827,
+  "payment_weights": {
+    "final_decision": 0.48,
+    "first_intermediate_window": 0.13,
+    "second_intermediate_window": 0.13,
+    "announced_value_lists": 0.16,
+    "urns": 0.1
+  },
+  "prize_probability": "0.5 + points/140",
+  "final_decision_weight_if_inactive_slots_redirected": {
+    "F": 0.74,
+    "S": 0.61,
+    "R": 0.48
+  },
+  "chosen_empty_slot_probability": 0.5,
+  "number_X": 22,
+  "number_X_short_variant": 16
+}

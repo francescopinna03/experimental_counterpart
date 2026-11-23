@@ -1,0 +1,4 @@
+window_seconds,purchase_trials,trial_seconds,first_window,first_certificate,second_window,second_certificate,final_decision,purchase_task_minutes,wait_before_final_seconds,wait_before_final_minutes
+30,22,150,10 to 40,50,60 to 90,105,120 to 150,55.0,120,44.0
+45,22,195,10 to 55,65,75 to 120,135,150 to 195,71.5,150,55.0
+45,16,195,10 to 55,65,75 to 120,135,150 to 195,52.0,150,40.0

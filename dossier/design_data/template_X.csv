@@ -1,17 +1,23 @@
-condition,prior,q_high,q_low,repeat,reveal,trial_id
-dependence,0.4,0.2,0.8,1,no,X01
-dependence,0.4,0.2,0.8,2,no,X02
-dependence,0.4,0.35,0.65,1,no,X03
-dependence,0.4,0.35,0.65,2,no,X04
-dependence,0.6,0.2,0.8,1,no,X05
-dependence,0.6,0.2,0.8,2,no,X06
-dependence,0.6,0.35,0.65,1,no,X07
-dependence,0.6,0.35,0.65,2,no,X08
-independence,0.4,0.5,0.5,1,no,X09
-independence,0.4,0.5,0.5,2,no,X10
-independence,0.6,0.5,0.5,1,no,X11
-independence,0.6,0.5,0.5,2,no,X12
-revelation,0.4,0.2,0.8,1,J before final list,X13
-revelation,0.4,0.35,0.65,1,J before final list,X14
-revelation,0.6,0.2,0.8,1,J before final list,X15
-revelation,0.6,0.35,0.65,1,J before final list,X16
+condition,prior,intensity,q_high,q_low,repeat,sellers,reveal,short_variant,trial_id
+joint,0.4,weak,0.35,0.65,1,both,no,no,X01
+joint,0.4,weak,0.35,0.65,2,both,no,no,X02
+joint,0.4,strong,0.2,0.8,1,both,no,yes,X03
+joint,0.4,strong,0.2,0.8,2,both,no,yes,X04
+joint,0.4,very_strong,0.05,0.95,1,both,no,yes,X05
+joint,0.4,very_strong,0.05,0.95,2,both,no,yes,X06
+joint,0.6,weak,0.35,0.65,1,both,no,no,X07
+joint,0.6,weak,0.35,0.65,2,both,no,no,X08
+joint,0.6,strong,0.2,0.8,1,both,no,yes,X09
+joint,0.6,strong,0.2,0.8,2,both,no,yes,X10
+joint,0.6,very_strong,0.05,0.95,1,both,no,yes,X11
+joint,0.6,very_strong,0.05,0.95,2,both,no,yes,X12
+single_seller,0.4,weak,0.35,0.65,1,one for each member of the pair,no,no,X13
+single_seller,0.4,strong,0.2,0.8,1,one for each member of the pair,no,yes,X14
+single_seller,0.4,very_strong,0.05,0.95,1,one for each member of the pair,no,yes,X15
+single_seller,0.6,weak,0.35,0.65,1,one for each member of the pair,no,no,X16
+single_seller,0.6,strong,0.2,0.8,1,one for each member of the pair,no,yes,X17
+single_seller,0.6,very_strong,0.05,0.95,1,one for each member of the pair,no,yes,X18
+placebo,0.4,placebo,0.5,0.5,1,both,no,yes,X19
+placebo,0.6,placebo,0.5,0.5,1,both,no,yes,X20
+revelation,0.4,strong,0.2,0.8,1,both,sale before the final decision,yes,X21
+revelation,0.6,strong,0.2,0.8,1,both,sale before the final decision,yes,X22
